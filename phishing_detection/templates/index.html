@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>AI-Based Phishing Detection System</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+
+<div class="app">
+
+    <!-- LEFT -->
+    <section class="intro">
+        <h1>AI-Based Phishing Detection System</h1>
+        <p class="lead">
+            A security system designed to identify phishing URLs, emails, and messages using artificial intelligence and machine learning techniques.
+        </p>
+
+        <ul class="features">
+            <li>✔️ URL and email content analysis</li>
+            <li>✔️ Machine learning-based classification</li>
+            <li>✔️ Risk-level assessment for detected threats</li>
+        </ul>
+    </section>
+
+    <!-- RIGHT -->
+    <section class="workspace">
+
+        <form onsubmit="analyze(event)">
+            <label>Input type</label>
+            <select name="input_type" required>
+                <option value="">Select</option>
+                <option value="url">URL</option>
+                <option value="email">Email</option>
+                <option value="message">Message</option>
+            </select>
+
+            <label>Content</label>
+            <textarea name="message" required placeholder="Enter URL, Email or Message"></textarea>
+
+            <button type="submit">Analyze</button>
+        </form>
+
+        <!-- Loader -->
+        <div id="loader" class="spinner-ring hidden"></div>
+
+        <!-- Result -->
+<div id="resultBox" style="display:none;" class="result-card">
+
+    <table class="result-table">
+        <tr>
+            <th>Status</th>
+            <td id="verdictCell"></td>
+        </tr>
+        <tr>
+            <th>Risk Level</th>
+            <td id="riskLevelCell"></td>
+        </tr>
+        <tr>
+            <th>Confidence</th>
+            <td id="confidenceCell"></td>
+        </tr>
+        <tr>
+            <th>Summary</th>
+            <td id="summaryCell"></td>
+        </tr>
+    </table>
+
+    <h3>Why this is risky</h3>
+    <table class="detail-table">
+        <tbody id="riskTable"></tbody>
+    </table>
+
+    <h3>Threat Intelligence</h3>
+    <table class="detail-table">
+        <tbody id="intelTable"></tbody>
+    </table>
+
+    <h3>Recommended Action</h3>
+    <div class="recommendation-box" id="recommendation"></div>
+
+</div>
+
+<script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
